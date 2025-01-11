@@ -1,10 +1,13 @@
 import MovieFilterNavigation from "@/components/MovieFilterNavigation";
-import React from "react";
+import React, { Suspense } from "react";
 
 const HomePage = () => {
   return (
     <>
-      <MovieFilterNavigation />
+      <Suspense fallback={<div>Loading...</div>}>
+        <MovieFilterNavigation />
+      </Suspense>
+
       <div className="max-w-6xl mx-auto px-4 py-8 mt-8">
         <h1 className="text-3xl font-semibold text-gray-800 dark:text-gray-200">
           Welcome to MovieFinder

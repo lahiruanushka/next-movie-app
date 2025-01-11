@@ -1,10 +1,11 @@
+// MovieFilterNavigation.js
 'use client';
 
+import { BiTrendingUp, BiStar } from 'react-icons/bi';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { BiTrendingUp, BiStar } from 'react-icons/bi';
 
-// NavigationItem component for each filter option
+// FilterNavItem component
 const FilterNavItem = ({ title, param, icon: Icon }) => {
   const searchParams = useSearchParams();
   const currentGenre = searchParams.get('genre');
