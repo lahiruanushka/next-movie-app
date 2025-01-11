@@ -10,12 +10,13 @@ import {
   AiOutlineClose,
   AiFillVideoCamera,
 } from "react-icons/ai";
+import ThemeSwitch from "./ThemeSwitch";
 
 const MenuItem = ({ title, address, Icon }) => {
   return (
     <Link
       href={address}
-      className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-amber-50 hover:text-amber-600 rounded-lg transition-colors"
+      className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-amber-50 hover:text-amber-600 rounded-lg transition-colors dark:text-gray-200 dark:hover:bg-gray-800"
     >
       <Icon className="text-lg" />
       <span className="capitalize font-medium">{title}</span>
@@ -29,8 +30,10 @@ const MobileMenuItem = ({ title, address, Icon }) => {
       {({ active }) => (
         <Link
           href={address}
-          className={`flex items-center gap-2 px-4 py-2 text-gray-700 ${
-            active ? "bg-amber-50 text-amber-600" : ""
+          className={`flex items-center gap-2 px-4 py-2 text-gray-700 dark:text-gray-200 ${
+            active
+              ? "bg-amber-50 text-amber-600 dark:bg-gray-800 dark:text-amber-500"
+              : ""
           }`}
         >
           <Icon className="text-lg" />
@@ -48,7 +51,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b dark:bg-gray-900 dark:border-gray-800">
       <nav className="max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -62,7 +65,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-4">
             {menuItems.map((item) => (
               <MenuItem
                 key={item.title}
@@ -71,21 +74,25 @@ const Header = () => {
                 Icon={item.Icon}
               />
             ))}
+            <ThemeSwitch />
           </div>
 
           {/* Mobile Menu */}
           <Menu as="div" className="relative md:hidden">
-            <Menu.Button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-              {({ open }) =>
-                open ? (
-                  <AiOutlineClose className="text-2xl" />
-                ) : (
-                  <AiOutlineMenu className="text-2xl" />
-                )
-              }
-            </Menu.Button>
+            <div className="flex items-center gap-2">
+              <ThemeSwitch />
+              <Menu.Button className="p-2 hover:bg-gray-100 rounded-lg transition-colors dark:hover:bg-gray-800">
+                {({ open }) =>
+                  open ? (
+                    <AiOutlineClose className="text-2xl dark:text-gray-200" />
+                  ) : (
+                    <AiOutlineMenu className="text-2xl dark:text-gray-200" />
+                  )
+                }
+              </Menu.Button>
+            </div>
 
-            <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right bg-white rounded-lg shadow-lg border focus:outline-none">
+            <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right bg-white rounded-lg shadow-lg border focus:outline-none dark:bg-gray-900 dark:border-gray-800">
               <div className="py-1">
                 {menuItems.map((item) => (
                   <MobileMenuItem
