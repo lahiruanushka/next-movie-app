@@ -31,12 +31,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <FiFilm className="w-6 h-6 text-amber-500" />
-              <span className="text-xl font-bold text-gray-900 dark:text-white">
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="p-2 rounded-lg transform group-hover:-rotate-6 transition-transform">
+                <FiFilm className="w-6 h-6 text-amber-500" />
+              </div>
+              <span className="text-xl font-bold text-amber-500">
                 MovieFinder
               </span>
-            </div>
+            </Link>
             <p className="text-gray-600 dark:text-gray-400">
               Your gateway to discovering amazing movies and TV shows.
             </p>

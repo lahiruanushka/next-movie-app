@@ -8,9 +8,9 @@ import {
   AiFillInfoCircle,
   AiOutlineMenu,
   AiOutlineClose,
-  AiFillVideoCamera,
 } from "react-icons/ai";
 import ThemeSwitch from "./ThemeSwitch";
+import { FiFilm } from "react-icons/fi";
 
 const MenuItem = ({ title, address, Icon }) => {
   return (
@@ -56,8 +56,8 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="bg-amber-500 p-2 rounded-lg transform group-hover:-rotate-6 transition-transform">
-              <AiFillVideoCamera className="text-xl text-white" />
+            <div className="p-2 rounded-lg transform group-hover:-rotate-6 transition-transform">
+              <FiFilm className="w-6 h-6 text-amber-500" />
             </div>
             <span className="text-xl font-bold text-amber-500">
               MovieFinder
