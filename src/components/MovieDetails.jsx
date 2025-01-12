@@ -180,3 +180,5 @@ const DetailCard = ({ title, content }) => (
     </p>
   </div>
 );
+
+export default MovieDetails;

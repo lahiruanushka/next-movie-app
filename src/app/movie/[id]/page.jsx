@@ -1,3 +1,5 @@
+import MovieDetails from "@/components/MovieDetails";
+
 export default async function MoviePage({ params }) {
   const movieId = params.id;
   const res = await fetch(
@@ -5,7 +7,5 @@ export default async function MoviePage({ params }) {
   );
   const movie = await res.json();
 
-  return (
-    <MovieDetails movie={movie} />
-  );
+  return <MovieDetails movie={movie} />;
 }

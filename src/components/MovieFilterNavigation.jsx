@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import React from 'react';
-import { Tab } from '@headlessui/react';
-import { BiTrendingUp, BiStar, BiCameraMovie } from 'react-icons/bi';
-import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import React from "react";
+import { Tab } from "@headlessui/react";
+import { BiTrendingUp, BiStar, BiCameraMovie } from "react-icons/bi";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 const MovieFilterNavigation = () => {
   const searchParams = useSearchParams();
@@ -15,23 +15,22 @@ const MovieFilterNavigation = () => {
       title: "Trending",
       param: "fetchTrending",
       icon: BiTrendingUp,
-      description: "Most popular content this week"
+      description: "Most popular content this week",
     },
     {
       title: "Top Rated",
       param: "fetchTopRated",
       icon: BiStar,
-      description: "Highest rated movies of all time"
-    }
+      description: "Highest rated movies of all time",
+    },
   ];
 
   // Find the index of the current tab
-  const defaultIndex = filterOptions.findIndex(
-    option => option.param === currentGenre
-  ) || 0;
+  const defaultIndex =
+    filterOptions.findIndex((option) => option.param === currentGenre) || 0;
 
   return (
-    <nav className="sticky top-16 z-40 w-full backdrop-blur-sm bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800 mb-10">
+    <nav className="sticky top-16 z-40 w-full backdrop-blur-sm bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800 mb-10 mt-10">
       <div className="max-w-6xl mx-auto px-4 py-4">
         <Tab.Group defaultIndex={defaultIndex}>
           <Tab.List className="flex flex-wrap gap-2 justify-center">
@@ -45,36 +44,39 @@ const MovieFilterNavigation = () => {
                       font-medium text-sm transition-all duration-300 outline-none
                       ${
                         selected
-                          ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg shadow-amber-500/20 scale-105'
-                          : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                          ? "bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg shadow-amber-500/20 scale-105"
+                          : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
                       }
                     `}
                   >
-                    <option.icon 
+                    <option.icon
                       className={`text-xl transition-transform duration-300 
-                        ${selected ? 'animate-pulse' : 'group-hover:scale-110'}
+                        ${selected ? "animate-pulse" : "group-hover:scale-110"}
                       `}
                     />
                     <span className="relative">
                       {option.title}
                       {selected && (
-                        <span 
+                        <span
                           className="absolute -bottom-1 left-0 w-full h-0.5 
                           bg-white/50 rounded-full"
                         />
                       )}
                     </span>
-                    
+
                     {/* Tooltip */}
-                    <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-48 
+                    <div
+                      className="absolute -top-12 left-1/2 -translate-x-1/2 w-48 
                       opacity-0 group-hover:opacity-100 transition-opacity duration-300
                       pointer-events-none"
                     >
-                      <div className="bg-gray-900 dark:bg-gray-700 text-white p-2 
+                      <div
+                        className="bg-gray-900 dark:bg-gray-700 text-white p-2 
                         rounded-lg text-xs text-center shadow-lg"
                       >
                         {option.description}
-                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2
+                        <div
+                          className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2
                           border-4 border-transparent border-t-gray-900 dark:border-t-gray-700"
                         />
                       </div>
