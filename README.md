@@ -83,24 +83,23 @@ Visit [http://localhost:3000](http://localhost:3000) to view the application.
 ```
 next-movie-app/
 ├── app/                      # Next.js app router
-│   ├── layout.js            # Root layout
-│   ├── page.js              # Home page
-│   ├── loading.js           # Loading UI
-│   ├── error.js             # Error handling
-│   ├── search/              # Search functionality
-│   │   └── page.js         
-│   └── movie/              # Movie details
+│   ├── layout.js             # Root layout
+│   ├── page.jsx              # Home page
+│   ├── loading.jsx           # Loading UI
+│   ├── error.jsx             # Error handling
+│   ├── search/               # Search functionality
+│   │   └── page.jsx         
+│   └── movie/                # Movie details
 │       └── [id]/
-│           └── page.js
+│           └── page.jsx
 ├── components/              # Reusable components
-│   ├── layout/             # Layout components
-│   │   ├── Header.js
-│   │   └── Footer.js
+│   ├── layout/              # Layout components
+│   │   ├── Header.jsx
+│   │   └── Footer.jsx
 │   ├── movie/              # Movie-related components
-│   │   ├── Card.js
-│   │   └── Results.js
-│   └── search/             # Search components
-│       └── SearchBox.js
+│   │   ├── Card.jsx
+│   │   └── Results.jsx
+│   └── SearchBox.jsx       # Search box component
 ├── lib/                    # Utility functions
 ├── public/                 # Static assets
 └── styles/                 # Global styles
