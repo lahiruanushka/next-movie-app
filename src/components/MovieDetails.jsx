@@ -10,6 +10,7 @@ import {
   FiHeart,
   FiShare2,
   FiPlayCircle,
+  FiImage,
 } from "react-icons/fi";
 
 const MovieDetails = ({ movie }) => {
@@ -21,25 +22,44 @@ const MovieDetails = ({ movie }) => {
     return `${hours}h ${remainingMinutes}m`;
   };
 
+  // Fallback image component when no backdrop/poster is available
+  const ImageFallback = ({ className }) => (
+    <div
+      className={`flex items-center justify-center bg-gray-200 dark:bg-gray-700 ${className}`}
+    >
+      <FiImage className="w-12 h-12 text-gray-400 dark:text-gray-500" />
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Hero Section with Backdrop */}
       <div className="relative h-[70vh] w-full">
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent z-10" />
-        <Image
-          src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-          alt={movie.title}
-          fill
-          className="object-cover"
-          priority
-        />
+        {movie.backdrop_path ? (
+          <Image
+            src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+            alt={`${movie.title} backdrop`}
+            fill
+            className="object-cover"
+            priority
+          />
+        ) : (
+          <ImageFallback className="h-full w-full" />
+        )}
 
         {/* Floating Action Buttons */}
         <div className="absolute bottom-4 right-4 z-20 flex space-x-2">
-          <button className="p-2 bg-white dark:bg-gray-800 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+          <button
+            className="p-2 bg-white dark:bg-gray-800 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            aria-label="Add to favorites"
+          >
             <FiHeart className="w-6 h-6 text-red-500" />
           </button>
-          <button className="p-2 bg-white dark:bg-gray-800 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+          <button
+            className="p-2 bg-white dark:bg-gray-800 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            aria-label="Share movie"
+          >
             <FiShare2 className="w-6 h-6 text-blue-500" />
           </button>
         </div>
@@ -51,17 +71,24 @@ const MovieDetails = ({ movie }) => {
           <div className="flex flex-col md:flex-row gap-8">
             {/* Poster */}
             <div className="flex-shrink-0">
-              <Image
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                alt={movie.title}
-                width={300}
-                height={450}
-                className="rounded-lg shadow-lg"
-              />
+              {movie.poster_path ? (
+                <Image
+                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                  alt={`${movie.title} poster`}
+                  width={300}
+                  height={450}
+                  className="rounded-lg shadow-lg"
+                />
+              ) : (
+                <div className="w-[300px] h-[450px] rounded-lg shadow-lg">
+                  <ImageFallback className="w-full h-full rounded-lg" />
+                </div>
+              )}
 
               <button
                 onClick={() => setIsTrailerOpen(true)}
                 className="w-full mt-4 flex items-center justify-center gap-2 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg transition-colors"
+                aria-label="Watch trailer"
               >
                 <FiPlayCircle className="w-5 h-5" />
                 Watch Trailer
@@ -77,33 +104,51 @@ const MovieDetails = ({ movie }) => {
               <div className="mt-4 flex flex-wrap gap-4">
                 <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
                   <FiCalendar className="w-5 h-5" />
-                  <span>{new Date(movie.release_date).getFullYear()}</span>
+                  <span>
+                    {movie.release_date
+                      ? new Date(movie.release_date).getFullYear()
+                      : "N/A"}
+                  </span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
                   <FiClock className="w-5 h-5" />
-                  <span>{formatRuntime(movie.runtime)}</span>
+                  <span>
+                    {movie.runtime ? formatRuntime(movie.runtime) : "N/A"}
+                  </span>
                 </div>
                 <div className="flex items-center gap-2 text-amber-500">
                   <FiStar className="w-5 h-5" />
-                  <span>{movie.vote_average?.toFixed(1)} / 10</span>
+                  <span>
+                    {movie.vote_average
+                      ? `${movie.vote_average.toFixed(1)} / 10`
+                      : "N/A"}
+                  </span>
                 </div>
               </div>
 
               <p className="mt-6 text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
-                {movie.overview}
+                {movie.overview || "No overview available."}
               </p>
 
               {/* Additional Details */}
               <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                 <DetailCard
                   title="Genre"
-                  content={movie.genres?.map((g) => g.name).join(", ")}
+                  content={
+                    movie.genres?.length > 0
+                      ? movie.genres.map((g) => g.name).join(", ")
+                      : "N/A"
+                  }
                 />
                 <DetailCard
                   title="Language"
-                  content={movie.original_language?.toUpperCase()}
+                  content={
+                    movie.original_language
+                      ? movie.original_language.toUpperCase()
+                      : "N/A"
+                  }
                 />
-                <DetailCard title="Status" content={movie.status} />
+                <DetailCard title="Status" content={movie.status || "N/A"} />
                 <DetailCard
                   title="Budget"
                   content={
