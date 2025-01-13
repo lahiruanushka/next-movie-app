@@ -80,33 +80,35 @@ const Header = () => {
             </div>
 
             {/* Mobile Menu */}
-            <Menu as="div" className="relative md:hidden">
-              <div className="flex items-center gap-2">
-                <ThemeSwitch />
-                <Menu.Button className="p-2 hover:bg-gray-100 rounded-lg transition-colors dark:hover:bg-gray-800">
-                  {({ open }) =>
-                    open ? (
-                      <AiOutlineClose className="text-2xl dark:text-gray-200" />
-                    ) : (
-                      <AiOutlineMenu className="text-2xl dark:text-gray-200" />
-                    )
-                  }
-                </Menu.Button>
-              </div>
-
-              <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right bg-white rounded-lg shadow-lg border focus:outline-none dark:bg-gray-900 dark:border-gray-800">
-                <div className="py-1">
-                  {menuItems.map((item) => (
-                    <MobileMenuItem
-                      key={item.title}
-                      title={item.title}
-                      address={item.address}
-                      Icon={item.Icon}
-                    />
-                  ))}
+            <div className="md:hidden">
+              <Menu as="div" className="relative inline-block text-left">
+                <div className="flex items-center gap-2">
+                  <ThemeSwitch />
+                  <Menu.Button className="p-2 hover:bg-gray-100 rounded-lg transition-colors dark:hover:bg-gray-800">
+                    {({ open }) =>
+                      open ? (
+                        <AiOutlineClose className="text-2xl dark:text-gray-200" />
+                      ) : (
+                        <AiOutlineMenu className="text-2xl dark:text-gray-200" />
+                      )
+                    }
+                  </Menu.Button>
                 </div>
-              </Menu.Items>
-            </Menu>
+
+                <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right bg-white rounded-lg shadow-lg border focus:outline-none dark:bg-gray-900 dark:border-gray-800 z-[60]">
+                  <div className="py-1">
+                    {menuItems.map((item) => (
+                      <MobileMenuItem
+                        key={item.title}
+                        title={item.title}
+                        address={item.address}
+                        Icon={item.Icon}
+                      />
+                    ))}
+                  </div>
+                </Menu.Items>
+              </Menu>
+            </div>
           </div>
 
           {/* Search Box */}
@@ -116,7 +118,7 @@ const Header = () => {
         </nav>
       </header>
       {/* Spacer for fixed header */}
-      <div className="h-28" /> {/* Adjusted height to account for header + search */}
+      <div className="h-28" />
     </>
   );
 };

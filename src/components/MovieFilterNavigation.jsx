@@ -66,17 +66,18 @@ const MovieFilterNavigation = () => {
 
                     {/* Tooltip */}
                     <div
-                      className="absolute -top-12 left-1/2 -translate-x-1/2 w-48 
+                      className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2
                       opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                      pointer-events-none"
+                      pointer-events-none z-50 transform-gpu"
                     >
                       <div
-                        className="bg-gray-900 dark:bg-gray-700 text-white p-2 
-                        rounded-lg text-xs text-center shadow-lg"
+                        className="bg-gray-900 dark:bg-gray-700 text-white px-3 py-2 
+                        rounded-lg text-xs text-center shadow-lg whitespace-nowrap
+                        relative"
                       >
                         {option.description}
                         <div
-                          className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2
+                          className="absolute top-full left-1/2 -translate-x-1/2 -translate-y-[1px]
                           border-4 border-transparent border-t-gray-900 dark:border-t-gray-700"
                         />
                       </div>
