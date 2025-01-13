@@ -1,156 +1,179 @@
-# MovieFinder
+# 🎬 MovieFinder
 
-MovieFinder is a modern web application built with Next.js that allows users to discover and explore movies. Users can browse trending and top-rated movies, and view detailed information about specific movies.
+A modern, feature-rich movie discovery platform built with Next.js 15. Browse trending movies, search your favorites, and explore detailed information about any film in our extensive database.
 
-🌐 **[Live Demo](https://moviefinder-demo.vercel.app/)**
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen.svg)](https://moviefinder-demo.vercel.app/)
+[![Next.js](https://img.shields.io/badge/Next.js-15.1.4-black.svg)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-blue.svg)](https://react.dev/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-![MovieFinder Screenshot](screenshots/home-page.png)
+<div align="center">
+  <img src="screenshots/home-page.png" alt="MovieFinder Home Page" width="800px" />
+</div>
 
-## Tutorial Source
+## ✨ Features
 
-This project was built following the tutorial by **React & Next js Projects with Sahand**:
-- 📺 Tutorial Link: [Build a Modern Next.js 13 Application](https://youtu.be/69vpmZgDeN8?si=me37P0gqPSgz08OQ)
-- 🎓 Channel: [React & Next js Projects with Sahand](https://www.youtube.com/@reactproject)
+- 🔍 **Advanced Search**: Find movies by title, genre, or year with real-time search suggestions
+- 🎯 **Comprehensive Details**: Access detailed information including cast, reviews, and ratings
+- 🎬 **Movie Categories**: Browse trending and top-rated movies
+- 🌓 **Theme Customization**: Seamless dark/light mode switching
+- 📱 **Responsive Design**: Optimized for all devices and screen sizes
+- ⚡ **Performance**: Fast page loads with Next.js app router and server components
+- 🎨 **Modern UI**: Sleek interface using HeadlessUI and Tailwind CSS
+- 🌐 **SEO Optimized**: Enhanced meta tags and dynamic sitemap generation
 
-## Features
+<div align="center">
+  <img src="screenshots/movie-page.png" alt="Movie Details Page" width="800px" />
+</div>
 
-- 🎬 Browse trending and top-rated movies
-- 🌓 Dark/Light mode support
-- 📱 Fully responsive design
-- 🎯 Detailed movie information
-- ⚡ Fast page loads with Next.js
-- 🎨 Modern UI with HeadlessUI and Tailwind CSS
+## 🚀 Tech Stack
 
-## Tech Stack
+- **Framework**: [Next.js 15.1.4](https://nextjs.org/)
+- **UI Library**: [React 19](https://react.dev/)
+- **Styling**: 
+  - [Tailwind CSS](https://tailwindcss.com/)
+  - [HeadlessUI](https://headlessui.dev/)
+- **State Management**: React Context + Hooks
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
+- **Theme Management**: [Next Themes](https://github.com/pacocoursey/next-themes)
+- **Data Fetching**: Server Components + TMDB API
 
-- [Next.js 15.1.4](https://nextjs.org/) - React framework
-- [React 19](https://react.dev/) - JavaScript library
-- [Tailwind CSS](https://tailwindcss.com/) - CSS framework
-- [HeadlessUI](https://headlessui.dev/) - Unstyled UI components
-- [React Icons](https://react-icons.github.io/react-icons/) - Icon library
-- [Next Themes](https://github.com/pacocoursey/next-themes) - Theme management
+## 📋 Prerequisites
 
-## Prerequisites
+- Node.js 18.0 or higher
+- npm or yarn package manager
+- TMDB API key
 
-Before you begin, ensure you have the following installed:
+## 🛠️ Installation
 
-- Node.js (v18 or higher)
-- npm or yarn
-
-## Getting Started
-
-1. Clone the repository:
-
+1. **Clone the repository**
 ```bash
 git clone https://github.com/lahiruanushka/next-movie-app.git
 cd next-movie-app
 ```
 
-2. Install dependencies:
-
+2. **Install dependencies**
 ```bash
 npm install
 # or
 yarn install
 ```
 
-3. Create a `.env.local` file in the root directory and add your TMDB API key:
-
+3. **Set up environment variables**
+Create a `.env.local` file:
 ```env
+# Required
 API_KEY=your_tmdb_api_key_here
+
+# Optional
+NEXT_PUBLIC_SITE_URL=your_deployment_url
 ```
 
-4. Run the development server:
-
+4. **Start development server**
 ```bash
 npm run dev
 # or
 yarn dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+Visit [http://localhost:3000](http://localhost:3000) to view the application.
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 next-movie-app/
-├── app/
-│   ├── layout.js
-│   ├── page.js
-│   ├── loading.js
-│   ├── error.js
-│   └── movie/
+├── app/                      # Next.js app router
+│   ├── layout.js            # Root layout
+│   ├── page.js              # Home page
+│   ├── loading.js           # Loading UI
+│   ├── error.js             # Error handling
+│   ├── search/              # Search functionality
+│   │   └── page.js         
+│   └── movie/              # Movie details
 │       └── [id]/
 │           └── page.js
-├── components/
-│   ├── MovieFilterNavigation.js
-│   ├── Card.js
-│   ├── Results.js
-│   └── Footer.js
-├── public/
-└── styles/
-    └── globals.css
+├── components/              # Reusable components
+│   ├── layout/             # Layout components
+│   │   ├── Header.js
+│   │   └── Footer.js
+│   ├── movie/              # Movie-related components
+│   │   ├── Card.js
+│   │   └── Results.js
+│   └── search/             # Search components
+│       └── SearchBox.js
+├── lib/                    # Utility functions
+├── public/                 # Static assets
+└── styles/                 # Global styles
 ```
 
-## Key Components
+## 🧩 Key Components
 
-- `HomePage`: Main page displaying movie grid
-- `MovieFilterNavigation`: Navigation bar for filtering movies
-- `Card`: Individual movie card component
-- `Results`: Grid layout for movie cards
-- `Header`: Application header
-- `Footer`: Application footer
+- `SearchBox`: Real-time search with debouncing and suggestions
+- `MovieDetails`: Comprehensive movie information display
+- `MovieFilterNavigation`: Category-based movie filtering
+- `Results`: Responsive movie grid with lazy loading
+- `ThemeSwitch`: Dark/light mode toggle
 
-## Available Scripts
+## 🔨 Available Scripts
 
 ```bash
-# Development
+# Development with hot reload
 npm run dev
 
-# Build
+# Build for production
 npm run build
 
-# Production
+# Start production server
 npm run start
 
-# Linting
+# Run linting
 npm run lint
+
+# Run tests
+npm run test
 ```
 
-## Environment Variables
+## 🔑 API Configuration
 
-The following environment variables are required:
-
-```env
-API_KEY=your_tmdb_api_key
-```
-
-To obtain an API key:
+To set up your TMDB API access:
 
 1. Visit [TMDB API](https://www.themoviedb.org/documentation/api)
 2. Create an account and request an API key
-3. Copy the API key to your `.env.local` file
+3. Add the API key to your `.env.local` file
 
-## Contributing
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create your feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
 5. Open a Pull Request
 
-## License
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+## 🙏 Acknowledgments
 
-- [React & Next js Projects with Sahand](https://www.youtube.com/@reactproject) for the excellent tutorial
-- [The Movie Database (TMDB)](https://www.themoviedb.org/) for providing the movie data API
-- [Next.js Documentation](https://nextjs.org/docs) for the excellent documentation
-- [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS framework
-- [HeadlessUI](https://headlessui.dev/) for accessible UI components
+- [React & Next js Projects with Sahand](https://www.youtube.com/@reactproject) - Original tutorial
+- [TMDB](https://www.themoviedb.org/) - Movie data API
+- [Vercel](https://vercel.com) - Hosting platform
+- [Next.js Team](https://nextjs.org/) - For the amazing framework
+- [Tailwind CSS](https://tailwindcss.com/) - For the utility-first CSS
+- [HeadlessUI](https://headlessui.dev/) - For accessible components
 
-## Support
+## 💬 Support
 
-For support, please open an issue in the repository or contact the maintainers.
+Need help? Here's how you can reach us:
+
+- Open an [issue](https://github.com/lahiruanushka/next-movie-app/issues)
+- Email: lahiruanushkaofficial@gmail.com
+
+## 📸 Screenshots
+
+<div align="center">
+  <img src="screenshots/search.png" alt="Search Functionality" width="400px" />
+  <img src="screenshots/dark-mode.png" alt="Dark Mode" width="400px" />
+</div>
