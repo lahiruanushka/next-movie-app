@@ -1,8 +1,7 @@
-
 // app/search/[searchTerm]/page.jsx
-import { Suspense } from 'react';
-import Results from "@/components/Results";
-import { FiAlertCircle, FiLoader } from 'react-icons/fi';
+import { Suspense } from "react";
+import Results from "@/components/movie/Results";
+import { FiAlertCircle, FiLoader } from "react-icons/fi";
 
 async function fetchSearchResults(searchTerm) {
   const res = await fetch(
@@ -11,7 +10,7 @@ async function fetchSearchResults(searchTerm) {
   );
 
   if (!res.ok) {
-    throw new Error('Failed to fetch search results');
+    throw new Error("Failed to fetch search results");
   }
 
   return res.json();
@@ -68,8 +67,8 @@ function EmptyState({ searchTerm }) {
         No results found
       </h2>
       <p className="text-gray-600 dark:text-gray-400 max-w-md mx-auto">
-        We couldn't find any movies matching "{searchTerm}". Try checking your spelling
-        or using different keywords.
+        We couldn't find any movies matching "{searchTerm}". Try checking your
+        spelling or using different keywords.
       </p>
     </div>
   );

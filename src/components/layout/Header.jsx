@@ -9,9 +9,9 @@ import {
   AiOutlineMenu,
   AiOutlineClose,
 } from "react-icons/ai";
-import ThemeSwitch from "./ThemeSwitch";
+import ThemeSwitch from "../ThemeSwitch";
 import { FiFilm } from "react-icons/fi";
-import SearchBox from "./SearchBox";
+import SearchBox from "../SearchBox";
 
 const MenuItem = ({ title, address, Icon }) => {
   return (

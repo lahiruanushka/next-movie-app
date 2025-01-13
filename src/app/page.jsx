@@ -1,7 +1,7 @@
 import React from "react";
 import { FiFilm } from "react-icons/fi";
 import MovieFilterNavigation from "@/components/MovieFilterNavigation";
-import Results from "@/components/Results";
+import Results from "@/components/movie/Results";
 import ClientErrorBoundary from "@/components/ClientErrorBoundary";
 
 const WelcomeHeader = () => (
